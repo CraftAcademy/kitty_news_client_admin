@@ -1,1 +1,1 @@
-# kitty_news_client_admin
+Kitty News Client Admin

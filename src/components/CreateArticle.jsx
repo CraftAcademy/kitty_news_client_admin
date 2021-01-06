@@ -2,10 +2,12 @@ import React from "react";
 import { Button, Container, Form, Header, Input, TextArea } from "semantic-ui-react";
 
 function CreateArticle() {
+
+
   return (
     <Container>
       <Header>Create Article</Header>
-      <Form data-cy="article-form">
+      <Form data-cy="article-form" onSubmit={(event)}>
         <Form.Field
           data-cy="title-field"
           label="Article title"
@@ -30,6 +32,7 @@ function CreateArticle() {
         <Button 
         data-cy="create-article-button"
         type="submit"
+        color="teal"
         >
           Create Article
         </Button>

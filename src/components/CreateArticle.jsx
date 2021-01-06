@@ -1,9 +1,10 @@
 import React from "react";
-import { Container, Form, Input, TextArea } from "semantic-ui-react";
+import { Button, Container, Form, Header, Input, TextArea } from "semantic-ui-react";
 
 function CreateArticle() {
   return (
     <Container>
+      <Header>Create Article</Header>
       <Form data-cy="article-form">
         <Form.Field
           data-cy="title-field"
@@ -26,6 +27,7 @@ function CreateArticle() {
           name="body"
           placeholder="Body"
         />
+        <Button>Create Article</Button>
       </Form>
     </Container>
   );

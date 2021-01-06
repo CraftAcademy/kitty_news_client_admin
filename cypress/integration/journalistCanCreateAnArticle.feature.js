@@ -15,6 +15,8 @@ describe("Journalist can create an article", () => {
       cy.get("[data-cy='lead-field']").type("Article Lead");
       cy.get("[data-cy='body-field']").type("Article Body");
       cy.get("[data-cy='create-article-button']").click();
+      cy.get("[data-cy='success-message-article']").should("contain", "Your article was successfully created")
     });
   });
+  
 });

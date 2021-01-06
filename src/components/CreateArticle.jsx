@@ -27,7 +27,12 @@ function CreateArticle() {
           name="body"
           placeholder="Body"
         />
-        <Button>Create Article</Button>
+        <Button 
+        data-cy="create-article-button"
+        type="submit"
+        >
+          Create Article
+        </Button>
       </Form>
     </Container>
   );

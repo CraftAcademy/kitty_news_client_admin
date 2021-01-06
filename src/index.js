@@ -4,6 +4,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import configureStore from './state/store/configureStore'
 import { Provider } from "react-redux";
+import "semantic-ui-css/semantic.min.css";
 import axios from 'axios'
 
 // axios.defaults.baseURL = process.env.REACT_APP_API_URL;

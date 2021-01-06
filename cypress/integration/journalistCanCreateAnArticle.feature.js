@@ -10,9 +10,11 @@ describe("Journalist can create an article", () => {
   });
 
   it("is expected to ", () => {
-    cy.get("[data-cy='title-field']").type("Article Title");
-    cy.get("[data-cy='lead-field']").type("Article Lead");
-    cy.get("[data-cy='body-field']").type("Article Body");
-    cy.get("[data-cy='create-article-button']").click();
+    cy.get("[data-cy='article-form']").within(() => {
+      cy.get("[data-cy='title-field']").type("Article Title");
+      cy.get("[data-cy='lead-field']").type("Article Lead");
+      cy.get("[data-cy='body-field']").type("Article Body");
+      cy.get("[data-cy='create-article-button']").click();
+    });
   });
 });

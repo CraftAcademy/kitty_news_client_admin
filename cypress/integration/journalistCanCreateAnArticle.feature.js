@@ -6,8 +6,8 @@ describe("Journalist can create an article", () => {
       url: "http://localhost:3000/api/articles",
       response: "fixture:successfully_create_article.json",
     });
+    cy.visit("/");
   });
-  cy.visit("/");
 
   it("is expected to ", () => {
     cy.get("[data-cy='title-field']").type("Article Title");

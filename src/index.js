@@ -9,7 +9,7 @@ import axios from "axios";
 
 let apiUrl;
 if (process.env.NODE_ENV === "production") {
-  apiUrl = "https://dream-time-news-api.herokuapp.com/api/";
+  apiUrl = "https://XXXXXXXXXXXXXXXXXXX.herokuapp.com/api/";
 } else {
   apiUrl = "http://localhost:3000/api/";
 }

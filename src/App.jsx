@@ -1,10 +1,10 @@
 import React from 'react'
-import CreateArticle from './components/CreateArticle'
+import CreateArticleForm from './components/CreateArticleForm'
 
 const App = () => {
   return (
     <>
-      <CreateArticle />
+      <CreateArticleForm />
     </>
   )
 }

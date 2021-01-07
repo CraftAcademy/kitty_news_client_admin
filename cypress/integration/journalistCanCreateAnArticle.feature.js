@@ -5,7 +5,7 @@ describe("Journalist can create an article", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/articles",
-      response: "fixture:successfully_create_article.json",
+      response: { message: "Your article was successfully created" },
     });
     cy.visit("/");
   });

@@ -10,9 +10,9 @@ import {
 } from "semantic-ui-react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { createArticle } from "../modules/createArticle";
+import { CreateArticle } from "../modules/CreateArticle";
 
-function CreateArticle() {
+function CreateArticleForm() {
   const dispatch = useDispatch();
   const message = useSelector((state) => state.createArticleMessage);
 
@@ -21,7 +21,7 @@ function CreateArticle() {
       <Header>Create Article</Header>
       <Form
         data-cy="article-form"
-        onSubmit={(event) => createArticle.create(event, dispatch)}
+        onSubmit={(event) => CreateArticle.create(event, dispatch)}
       >
         <Form.Field
           data-cy="title-field"
@@ -62,4 +62,4 @@ function CreateArticle() {
   );
 }
 
-export default CreateArticle;
+export default CreateArticleForm;

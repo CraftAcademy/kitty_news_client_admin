@@ -1,16 +1,17 @@
 import axios from "axios";
 
-const createArticle = {
+const CreateArticle = {
   async create(event, dispatch) {
     event.preventDefault();
     try {
-      let response = await axios.post(`/articles`, {
+      let response = await axios.post("/articles", {
         article: {
           title: event.target.title.value,
           lead: event.target.lead.value,
           body: event.target.body.value,
         },
       });
+
       dispatch({
         type: "SET_ARTICLE_MESSAGE",
         payload: response.data.message,
@@ -21,4 +22,4 @@ const createArticle = {
   },
 };
 
-export { createArticle };
+export { CreateArticle };

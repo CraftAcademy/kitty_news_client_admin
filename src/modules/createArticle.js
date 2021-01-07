@@ -1,11 +1,24 @@
-import axios from 'axios'
-import { create } from 'cypress/types/lodash'
+import axios from "axios";
 
 const createArticle = {
-  async create(dispatch) {
+  async create(event, dispatch) {
+    event.preventDefault();
     try {
-    let response = await axios.post(`/articles`, {})
-    dispatch({ type: ""})
-  }
-}
-}
+      let response = await axios.post(`/articles`, {
+        article: {
+          title: event.target.title.value,
+          lead: event.target.lead.value,
+          body: event.target.body.value,
+        },
+      });
+      dispatch({
+        type: "SET_ARTICLE_MESSAGE",
+        payload: response.data.message,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  },
+};
+
+export { createArticle };

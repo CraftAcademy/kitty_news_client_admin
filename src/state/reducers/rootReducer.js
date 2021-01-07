@@ -1,7 +1,13 @@
-import initialState from '../store/initialState'
+const rootReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "SET_ARTICLE_MESSAGE":
+      return {
+        ...state,
+        createArticleMessage: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
-const rootReducer = (state = initialState) => {
-  return state
-}
-
-export default rootReducer
+export default rootReducer;

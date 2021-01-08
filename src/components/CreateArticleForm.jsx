@@ -45,17 +45,26 @@ function CreateArticleForm() {
           name="body"
           placeholder="Body"
         />
-        {/* <div data-cy="categories"> */}
-          <Checkbox label="Global Politics" />
+        <div>
+        <br />
+          <input type="checkbox" name="global_politics" id="global_politics" data-cy='categories-global-politics'/>
+          <label for="global_politics">Global Politics</label>
           <br />
-          <Checkbox label="Sports" data-cy='categories-sports'/>
+          <input type="checkbox" name="sports" id="sports" data-cy='categories-sports'/>
+          <label for="sports">Sports</label>
           <br />
-          <Checkbox label="Self Care" />
+          <input type="checkbox" name="self_care" id="self_care" data-cy='categories-self-care'/>
+          <label for="self_care">Self Care</label>
           <br />
-          <Checkbox label="News" />
+          <input type="checkbox" name="news" id="news" data-cy='categories-news'/>
+          <label for="news">News</label>
           <br />
-          <Checkbox label="Culture" />
-        {/* </div> */}
+          <input type="checkbox" name="culture" id="culture" data-cy='categories-culture'/>
+          <label for="culture">Culture</label>
+          <br />
+        </div>
+
+
         <br/>
         <br/>
         <Button

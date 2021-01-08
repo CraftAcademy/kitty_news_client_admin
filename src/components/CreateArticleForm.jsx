@@ -7,6 +7,7 @@ import {
   Input,
   TextArea,
   Message,
+  Checkbox,
 } from "semantic-ui-react";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -44,6 +45,19 @@ function CreateArticleForm() {
           name="body"
           placeholder="Body"
         />
+        {/* <div data-cy="categories"> */}
+          <Checkbox label="Global Politics" />
+          <br />
+          <Checkbox label="Sports" data-cy='categories-sports'/>
+          <br />
+          <Checkbox label="Self Care" />
+          <br />
+          <Checkbox label="News" />
+          <br />
+          <Checkbox label="Culture" />
+        {/* </div> */}
+        <br/>
+        <br/>
         <Button
           data-cy="create-article-button"
           type="submit"

@@ -10,7 +10,8 @@ const CreateArticle = {
           title: event.target.title.value,
           lead: event.target.lead.value,
           body: event.target.body.value,
-          category_id: event.target.category2.value
+          category_id: parseInt(event.target.categories.value)
+
         },
       });
       dispatch({

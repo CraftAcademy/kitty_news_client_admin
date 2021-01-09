@@ -9,7 +9,6 @@ describe("Journalist can create an article", () => {
     });
     cy.visit("/");
   });
-
   it("is expected to successfully fill in ", () => {
     cy.get("[data-cy='article-form']").within(() => {
       cy.get("[data-cy='title-field']").type("Article Title");
@@ -23,22 +22,22 @@ describe("Journalist can create an article", () => {
       );
     });
   });
-
   describe("Sad path: Journalist can not create an article", () => {
     beforeEach(() => {
       cy.server();
       cy.route({
         method: "POST",
         url: "http://localhost:3000/api/articles",
-        response: { message: "Something went wrong!" }, status: 422
+        response: { message: "Something went wrong!" },
+        status: 422,
       });
       cy.visit("/");
     });
-
     it("when title is not filled in ", () => {
       cy.get("[data-cy='article-form']").within(() => {
         cy.get("[data-cy='lead-field']").type("Article Lead");
         cy.get("[data-cy='body-field']").type("Article Body");
+        cy.get('[data-cy="categories-dropdown"]').select("Culture");
         cy.get("[data-cy='create-article-button']").click();
         cy.get("[data-cy='api-response-message']").should(
           "contain",
@@ -46,11 +45,11 @@ describe("Journalist can create an article", () => {
         );
       });
     });
-
     it("when lead is not filled in ", () => {
       cy.get("[data-cy='article-form']").within(() => {
         cy.get("[data-cy='title-field']").type("Article Title");
         cy.get("[data-cy='body-field']").type("Article Body");
+        cy.get('[data-cy="categories-dropdown"]').select("Culture");
         cy.get("[data-cy='create-article-button']").click();
         cy.get("[data-cy='api-response-message']").should(
           "contain",
@@ -58,11 +57,23 @@ describe("Journalist can create an article", () => {
         );
       });
     });
-
     it("when body is not filled in ", () => {
       cy.get("[data-cy='article-form']").within(() => {
         cy.get("[data-cy='title-field']").type("Article Title");
         cy.get("[data-cy='lead-field']").type("Article Lead");
+        cy.get('[data-cy="categories-dropdown"]').select("Culture");
+        cy.get("[data-cy='create-article-button']").click();
+        cy.get("[data-cy='api-response-message']").should(
+          "contain",
+          "Something went wrong!"
+        );
+      });
+    });
+    it("when category is not selected", () => {
+      cy.get("[data-cy='article-form']").within(() => {
+        cy.get("[data-cy='title-field']").type("Article Title");
+        cy.get("[data-cy='lead-field']").type("Article Lead");
+        cy.get("[data-cy='body-field']").type("Article Body");
         cy.get("[data-cy='create-article-button']").click();
         cy.get("[data-cy='api-response-message']").should(
           "contain",

@@ -7,13 +7,7 @@ import { Provider } from "react-redux";
 import "semantic-ui-css/semantic.min.css";
 import axios from "axios";
 
-let apiUrl;
-if (process.env.NODE_ENV === "production") {
-  apiUrl = "https://kitty-news.herokuapp.com/";
-} else {
-  apiUrl = "http://localhost:3000/api/";
-}
-axios.defaults.baseURL = apiUrl;
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 const store = configureStore();
 window.store = store;

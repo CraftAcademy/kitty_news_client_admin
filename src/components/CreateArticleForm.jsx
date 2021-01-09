@@ -7,14 +7,14 @@ import {
   Input,
   TextArea,
   Message,
-  } from "semantic-ui-react";
+} from "semantic-ui-react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { CreateArticle } from "../modules/CreateArticle";
 
 function CreateArticleForm() {
   const dispatch = useDispatch();
-  const { createArticleMessage, errorMessage } = useSelector(state => state);
+  const { createArticleMessage, errorMessage } = useSelector((state) => state);
 
   return (
     <Container>
@@ -45,17 +45,20 @@ function CreateArticleForm() {
           placeholder="Body"
         />
         <Form.Field>
-        <label for="categories">Choose a category:</label>
-        <select name="categories" id="categories" data-cy="categories-dropdown">
-          <option value={0}>Select</option>
-          <option value={1}>Global Politics</option>
-          <option value={2}>Sports</option>
-          <option value={3}>Self Care</option>
-          <option value={4}>News</option>
-          <option value={5}>Culture</option>
-        </select></Form.Field>
-        <br />
-        <br />
+          <label for="categories">Choose a category:</label>
+          <select
+            name="categories"
+            id="categories"
+            data-cy="categories-dropdown"
+          >
+            <option value={0}>Select</option>
+            <option value={1}>Global Politics</option>
+            <option value={2}>Sports</option>
+            <option value={3}>Self Care</option>
+            <option value={4}>News</option>
+            <option value={5}>Culture</option>
+          </select>
+        </Form.Field>
         <Button
           data-cy="create-article-button"
           type="submit"

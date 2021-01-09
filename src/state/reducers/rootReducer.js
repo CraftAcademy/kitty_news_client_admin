@@ -4,13 +4,13 @@ const rootReducer = (state = {}, action) => {
       return {
         ...state,
         createArticleMessage: action.payload,
-        errorMessage: false
+        errorMessage: ""
       };
     case "SET_ERROR_MESSAGE":
       return {
         ...state,
         errorMessage: action.payload,
-        createArticleMessage: false
+        createArticleMessage: ""
       };
     default:
       return state;

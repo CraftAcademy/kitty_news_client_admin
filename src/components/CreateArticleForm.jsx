@@ -14,7 +14,7 @@ import { CreateArticle } from "../modules/CreateArticle";
 
 function CreateArticleForm() {
   const dispatch = useDispatch();
-  const { createArticleMessage, errorMessage } = useSelector((state) => state);
+  const { createArticleMessage, errorMessage } = useSelector(state => state);
 
   return (
     <Container>

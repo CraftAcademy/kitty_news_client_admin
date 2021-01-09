@@ -7,17 +7,16 @@ import {
   Input,
   TextArea,
   Message,
-  Dropdown,
-} from "semantic-ui-react";
+  } from "semantic-ui-react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { CreateArticle } from "../modules/CreateArticle";
 
 function CreateArticleForm() {
   const dispatch = useDispatch();
-  const message = useSelector((state) => state.createArticleMessage);
+  const { createArticleMessage, errorMessage } = useSelector((state) => state);
 
-   return (
+  return (
     <Container>
       <Header>Create Article</Header>
       <Form
@@ -45,15 +44,16 @@ function CreateArticleForm() {
           name="body"
           placeholder="Body"
         />
+        <Form.Field>
         <label for="categories">Choose a category:</label>
         <select name="categories" id="categories" data-cy="categories-dropdown">
-        <option value={0}>Select</option>
+          <option value={0}>Select</option>
           <option value={1}>Global Politics</option>
           <option value={2}>Sports</option>
           <option value={3}>Self Care</option>
           <option value={4}>News</option>
           <option value={5}>Culture</option>
-        </select>
+        </select></Form.Field>
         <br />
         <br />
         <Button
@@ -64,9 +64,14 @@ function CreateArticleForm() {
         >
           Create Article
         </Button>
-        {message && (
-          <Message color="gray" size="big" data-cy="api-response-message">
-            {message}
+        {createArticleMessage && (
+          <Message color="green" size="big" data-cy="api-response-message">
+            {createArticleMessage}
+          </Message>
+        )}
+        {errorMessage && (
+          <Message color="red" size="big" data-cy="api-response-message">
+            {errorMessage}
           </Message>
         )}
       </Form>

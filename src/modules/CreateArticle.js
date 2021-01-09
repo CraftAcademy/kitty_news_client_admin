@@ -10,7 +10,6 @@ const CreateArticle = {
           lead: event.target.lead.value,
           body: event.target.body.value,
           category_id: parseInt(event.target.categories.value)
-
         },
       });
       dispatch({
@@ -19,7 +18,7 @@ const CreateArticle = {
       });
     } catch (error) {
       dispatch({
-        type: "SET_ARTICLE_MESSAGE",
+        type: "SET_ERROR_MESSAGE",
         payload: error.response.data.message,
       });
     }

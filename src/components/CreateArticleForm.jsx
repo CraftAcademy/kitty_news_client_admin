@@ -51,7 +51,9 @@ function CreateArticleForm() {
           <br />
           <input
             type="checkbox"
+            // name= {categoryID}
             name="category1"
+            id={0}
             value={0}
             data-cy="categories-global-politics"
           />
@@ -60,6 +62,7 @@ function CreateArticleForm() {
           <input
             type="checkbox"
             name="category2"
+            id={1}
             value={1}
             data-cy="categories-sports"
             // onChange={(value) => updateInput(value)}

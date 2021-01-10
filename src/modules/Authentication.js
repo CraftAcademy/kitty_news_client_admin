@@ -7,7 +7,6 @@ const auth = new JtockAuth({
 
 const performAuthentication = async (event, dispatch) => {
   try {
-    debugger
     event.preventDefault();
     let response = await auth.signIn(
       event.target.email.value,
@@ -33,4 +32,4 @@ const performAuthentication = async (event, dispatch) => {
     });
   }
 };
-export { performAuthentication };
+export default performAuthentication;

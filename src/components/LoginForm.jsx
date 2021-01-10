@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Icon, Segment, Form, Message } from 'semantic-ui-react';
-import { performAuthentication } from '../modules/Authentication';
+import performAuthentication from '../modules/Authentication';
 
 const LoginForm = () => {
   const dispatch = useDispatch();

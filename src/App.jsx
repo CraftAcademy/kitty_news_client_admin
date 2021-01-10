@@ -1,9 +1,10 @@
 import React from 'react'
+import CreateArticleForm from './components/CreateArticleForm'
 
 const App = () => {
   return (
     <>
-      
+      <CreateArticleForm />
     </>
   )
 }

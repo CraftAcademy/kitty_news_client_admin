@@ -7,7 +7,7 @@ import { Provider } from "react-redux";
 import "semantic-ui-css/semantic.min.css";
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+axios.defaults.baseURL = "http://localhost:3000/api";
 
 const store = configureStore();
 window.store = store;

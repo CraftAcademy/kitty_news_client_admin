@@ -50,7 +50,7 @@ describe("Journalist can login to see article form", () => {
         "Invalid login credentials. Please try again."
       );
     });
-    cy.get("[data-cy='header-user-email']").contains("Woof! You're not logged in.");
+    cy.get("[data-cy='header-user-email']").contains("Woof! You're not logged in yet.");
     cy.get("[data-cy='article-form']").should("not.exist");
   });
 
@@ -75,7 +75,7 @@ describe("Journalist can login to see article form", () => {
         "You are not authorized to be here"
       );
     });
-    cy.get("[data-cy='header-user-email']").contains("Woof! You're not logged in.");
+    cy.get("[data-cy='header-user-email']").contains("Woof! You're not logged in yet.");
     cy.get("[data-cy='article-form']").should("not.exist");
   });
 });

@@ -16,7 +16,7 @@ const ArticlesServices = {
           },
         },
         {
-          header: headers,
+          headers: headers,
         }
       );
       dispatch({

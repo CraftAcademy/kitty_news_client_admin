@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const CreateArticle = {
+const ArticlesServices = {
   async create(event, dispatch) {
     event.preventDefault();
     try {
@@ -9,7 +9,7 @@ const CreateArticle = {
           title: event.target.title.value,
           lead: event.target.lead.value,
           body: event.target.body.value,
-          category_id: parseInt(event.target.categories.value)
+          category_id: parseInt(event.target.categories.value),
         },
       });
       dispatch({
@@ -25,4 +25,4 @@ const CreateArticle = {
   },
 };
 
-export { CreateArticle };
+export default ArticlesServices;

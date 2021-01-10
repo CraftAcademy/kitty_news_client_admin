@@ -68,12 +68,12 @@ function CreateArticleForm() {
           Create Article
         </Button>
         {createArticleMessage && (
-          <Message color="green" size="big" data-cy="api-response-message">
+          <Message color="green" size="big" data-cy="api-response-success-message">
             {createArticleMessage}
           </Message>
         )}
         {errorMessage && (
-          <Message color="red" size="big" data-cy="api-response-message">
+          <Message color="red" size="big" data-cy="api-response-error-message">
             {errorMessage}
           </Message>
         )}

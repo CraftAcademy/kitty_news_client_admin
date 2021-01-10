@@ -16,7 +16,7 @@ describe("Journalist can create an article", () => {
       cy.get("[data-cy='body-field']").type("Article Body");
       cy.get('[data-cy="categories-dropdown"]').select("Culture");
       cy.get("[data-cy='create-article-button']").click();
-      cy.get("[data-cy='api-response-message']").should(
+      cy.get("[data-cy='api-response-success-message']").should(
         "contain",
         "Your article was successfully created"
       );
@@ -39,7 +39,7 @@ describe("Journalist can create an article", () => {
         cy.get("[data-cy='body-field']").type("Article Body");
         cy.get('[data-cy="categories-dropdown"]').select("Culture");
         cy.get("[data-cy='create-article-button']").click();
-        cy.get("[data-cy='api-response-message']").should(
+        cy.get("[data-cy='api-response-error-message']").should(
           "contain",
           "Title can't be blank"
         );
@@ -57,7 +57,7 @@ describe("Journalist can create an article", () => {
         cy.get("[data-cy='body-field']").type("Article Body");
         cy.get('[data-cy="categories-dropdown"]').select("Culture");
         cy.get("[data-cy='create-article-button']").click();
-        cy.get("[data-cy='api-response-message']").should(
+        cy.get("[data-cy='api-response-error-message']").should(
           "contain",
           "Lead can't be blank"
         );
@@ -75,7 +75,7 @@ describe("Journalist can create an article", () => {
         cy.get("[data-cy='lead-field']").type("Article Lead");
         cy.get('[data-cy="categories-dropdown"]').select("Culture");
         cy.get("[data-cy='create-article-button']").click();
-        cy.get("[data-cy='api-response-message']").should(
+        cy.get("[data-cy='api-response-error-message']").should(
           "contain",
           "Body can't be blank"
         );
@@ -93,7 +93,7 @@ describe("Journalist can create an article", () => {
         cy.get("[data-cy='lead-field']").type("Article Lead");
         cy.get("[data-cy='body-field']").type("Article Body");
         cy.get("[data-cy='create-article-button']").click();
-        cy.get("[data-cy='api-response-message']").should(
+        cy.get("[data-cy='api-response-error-message']").should(
           "contain",
           "Category must exist"
         );

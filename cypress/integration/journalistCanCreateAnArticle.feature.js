@@ -24,7 +24,7 @@ describe("Journalist can create an article", () => {
   });
   describe("Sad path: Journalist can not create an article", () => {
     beforeEach(() => {
-      cy.server(); 
+      cy.server();
       cy.visit("/");
     });
     it("when title is not filled in ", () => {
@@ -34,7 +34,7 @@ describe("Journalist can create an article", () => {
         response: { message: "Title can't be blank" },
         status: 422,
       });
-     
+
       cy.get("[data-cy='article-form']").within(() => {
         cy.get("[data-cy='lead-field']").type("Article Lead");
         cy.get("[data-cy='body-field']").type("Article Body");

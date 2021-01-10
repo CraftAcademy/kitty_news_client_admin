@@ -1,15 +1,33 @@
-/* eslint-disable no-undef */
 describe("Journalist can create an article", () => {
-  before(() => {
+  beforeEach(() => {
     cy.server();
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/auth/sign_in",
+      response: "fixture:journalist_can_login.json",
+      headers: {
+        uid: "journalist@mail.com",
+      },
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/auth/validate_token**",
+      response: "fixture:journalist_can_login.json",
+    });
+    cy.visit("/");
+    cy.get("[data-cy='login-form']").within(() => {
+      cy.get("[data-cy='email']").type("journalist@mail.com");
+      cy.get("[data-cy='password']").type("password");
+      cy.get("[data-cy='submit-btn']").contains("Submit").click();
+    });
+  });
+
+  it("is expected to successfully fill in ", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/articles",
       response: { message: "Your article was successfully created" },
     });
-    cy.visit("/");
-  });
-  it("is expected to successfully fill in ", () => {
     cy.get("[data-cy='article-form']").within(() => {
       cy.get("[data-cy='title-field']").type("Article Title");
       cy.get("[data-cy='lead-field']").type("Article Lead");
@@ -22,11 +40,25 @@ describe("Journalist can create an article", () => {
       );
     });
   });
+
   describe("Sad path: Journalist can not create an article", () => {
     beforeEach(() => {
       cy.server();
-      cy.visit("/");
+      cy.route({
+        method: "POST",
+        url: "http://localhost:3000/api/auth/sign_in",
+        response: "fixture:journalist_can_login.json",
+        headers: {
+          uid: "journalist@mail.com",
+        },
+      });
+      cy.route({
+        method: "GET",
+        url: "http://localhost:3000/api/auth/validate_token**",
+        response: "fixture:journalist_can_login.json",
+      });
     });
+
     it("when title is not filled in ", () => {
       cy.route({
         method: "POST",

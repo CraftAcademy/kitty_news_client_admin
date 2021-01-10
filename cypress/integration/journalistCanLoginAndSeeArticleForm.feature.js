@@ -1,4 +1,4 @@
-describe("Journalist can login", () => {
+describe("Journalist can login to see article form", () => {
   beforeEach(() => {
     cy.server();
     cy.route({
@@ -25,8 +25,9 @@ describe("Journalist can login", () => {
     });
     cy.get("[data-cy='header-user-email']").should(
       "contain",
-      "Logged in as journalist@mail.com"
+      "Meow! Welcome back journalist@mail.com"
     );
+
     cy.get("[data-cy='article-form']").should("exist");
   });
 
@@ -49,7 +50,7 @@ describe("Journalist can login", () => {
         "Invalid login credentials. Please try again."
       );
     });
-    cy.get("[data-cy='header-user-email']").contains("You're not logged in.");
+    cy.get("[data-cy='header-user-email']").contains("Woof! You're not logged in.");
     cy.get("[data-cy='article-form']").should("not.exist");
   });
 
@@ -74,7 +75,7 @@ describe("Journalist can login", () => {
         "You are not authorized to be here"
       );
     });
-    cy.get("[data-cy='header-user-email']").contains("You're not logged in.");
+    cy.get("[data-cy='header-user-email']").contains("Woof! You're not logged in.");
     cy.get("[data-cy='article-form']").should("not.exist");
   });
 });

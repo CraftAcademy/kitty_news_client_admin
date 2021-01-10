@@ -7,8 +7,8 @@ const Header = () => {
     <div>
       <h2 data-cy="header-user-email">
         {currentUser
-          ? `Logged in as ${currentUser.uid}`
-          : "You're not logged in."
+          ? `Meow! Welcome back ${currentUser.uid}`
+          : "Woof! You're not logged in."
         }
       </h2>
     </div>

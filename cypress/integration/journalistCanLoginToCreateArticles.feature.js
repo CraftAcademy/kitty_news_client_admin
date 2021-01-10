@@ -1,4 +1,4 @@
-describe("Journalist can login to create articles", () => {
+describe("Journalist can login", () => {
   beforeEach(() => {
     cy.server();
     cy.route({
@@ -27,6 +27,7 @@ describe("Journalist can login to create articles", () => {
       "contain",
       "Logged in as journalist@mail.com"
     );
+    cy.get("[data-cy='article-form']").should("exist");
   });
 
   it("unsuccessfully with wrong credentials", () => {
@@ -49,6 +50,7 @@ describe("Journalist can login to create articles", () => {
       );
     });
     cy.get("[data-cy='header-user-email']").contains("You're not logged in.");
+    cy.get("[data-cy='article-form']").should("not.exist");
   });
 
   it("sad path: unsuccessfully with right credentials but not an journalist", () => {
@@ -73,5 +75,6 @@ describe("Journalist can login to create articles", () => {
       );
     });
     cy.get("[data-cy='header-user-email']").contains("You're not logged in.");
+    cy.get("[data-cy='article-form']").should("not.exist");
   });
 });

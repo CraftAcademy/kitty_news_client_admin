@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "data": {
+    "id": 2,
+    "email": "registered@user.com",
+    "provider": "email",
+    "uid": "registered@user.com",
+    "name": "user",
+    "allow_password_change": false,
+    "role": "registered user"
+  }
+}

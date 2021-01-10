@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Icon, Segment, Form, Message } from 'semantic-ui-react';
-// import { performAuthentication } from '../modules/auth';
+import { performAuthentication } from '../modules/Authentication';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const LoginForm = () => {
       <Form
         className="loginForm"
         data-cy="login-form"
-        // onSubmit={(event) => performAuthentication(event, dispatch)}
+        onSubmit={(event) => performAuthentication(event, dispatch)}
       >
         <Form.Input
           icon="at"

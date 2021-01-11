@@ -16,7 +16,6 @@ describe("Journalist can login to see article form", () => {
     });
     cy.visit("/");
   });
-
   it("successfully with correct credentials", () => {
     cy.get("[data-cy='login-form']").within(() => {
       cy.get("[data-cy='email']").type("journalist@mail.com");
@@ -27,10 +26,8 @@ describe("Journalist can login to see article form", () => {
       "contain",
       "Meow! Welcome back journalist@mail.com"
     );
-
     cy.get("[data-cy='article-form']").should("exist");
   });
-
   it("unsuccessfully with wrong credentials", () => {
     cy.route({
       method: "POST",
@@ -41,7 +38,6 @@ describe("Journalist can login to see article form", () => {
         success: false,
       },
     });
-
     cy.get("[data-cy='login-form']").within(() => {
       cy.get("[data-cy='email']").type("journalist@mail.com");
       cy.get("[data-cy='password']").type("wrongpassword");
@@ -50,10 +46,11 @@ describe("Journalist can login to see article form", () => {
         "Invalid login credentials. Please try again."
       );
     });
-    cy.get("[data-cy='header-user-email']").contains("Woof! You're not logged in yet.");
+    cy.get("[data-cy='header-user-email']").contains(
+      "Woof! You're not logged in yet."
+    );
     cy.get("[data-cy='article-form']").should("not.exist");
   });
-
   it("sad path: unsuccessfully with right credentials but not an journalist", () => {
     cy.route({
       method: "POST",
@@ -66,7 +63,6 @@ describe("Journalist can login to see article form", () => {
       response: "fixture:registered_user_can_not_log_in.json",
     });
     cy.visit("/");
-
     cy.get("[data-cy='login-form']").within(() => {
       cy.get("[data-cy='email']").type("registered@user.com");
       cy.get("[data-cy='password']").type("password");
@@ -75,7 +71,9 @@ describe("Journalist can login to see article form", () => {
         "You are not authorized to be here"
       );
     });
-    cy.get("[data-cy='header-user-email']").contains("Woof! You're not logged in yet.");
+    cy.get("[data-cy='header-user-email']").contains(
+      "Woof! You're not logged in yet."
+    );
     cy.get("[data-cy='article-form']").should("not.exist");
   });
 });

@@ -5,7 +5,7 @@ import LoginForm from "./components/LoginForm";
 import Header from "./components/Header";
 
 const App = () => {
-  const currentUser = useSelector((state) => state.currentUser);
+  const currentUser = useSelector(state => state.currentUser);
   return (
     <>
       <Header />

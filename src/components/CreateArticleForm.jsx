@@ -18,10 +18,14 @@ const CreateArticleForm = () => {
   const dispatch = useDispatch();
   const { createArticleMessage, errorMessage } = useSelector((state) => state);
   const [image, setImage] = useState();
+  const [title, setTitle] = useState()
+  const [lead, setLead] = useState()
+  const [body, setBody] = useState()
 
   const setImagePreview = (event) => {
     setImage(event.target.files[0]);
   };
+
 
   return (
     <Container>
@@ -36,6 +40,7 @@ const CreateArticleForm = () => {
           control={Input}
           name="title"
           placeholder="Title"
+          onChange={(event) => setTitle(event.target.value)}
         />
         <Form.Field
           data-cy="lead-field"
@@ -43,6 +48,8 @@ const CreateArticleForm = () => {
           control={Input}
           name="lead"
           placeholder="Lead"
+          onChange={(event) => setLead(event.target.value)}
+
         />
         <Form.Field
           data-cy="body-field"
@@ -50,6 +57,8 @@ const CreateArticleForm = () => {
           control={TextArea}
           name="body"
           placeholder="Body"
+          onChange={(event) => setBody(event.target.value)}
+
         />
         <Form.Field>
           <label for="categories">Choose a category:</label>
@@ -98,7 +107,11 @@ const CreateArticleForm = () => {
         )}
       </Form>
       <Container>
-        <Divider horizontal>Image Preview:</Divider>
+        <Divider horizontal>Article Preview:</Divider>
+        <Message>{title}</Message>
+        <Message>{lead}</Message>
+        <Message>{body}</Message>
+
         {image && (
           <Image
             size="small"
@@ -106,6 +119,7 @@ const CreateArticleForm = () => {
             src={URL.createObjectURL(image)}
           />
         )}
+
       </Container>
     </Container>
   );

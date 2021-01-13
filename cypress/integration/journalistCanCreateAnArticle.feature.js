@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("Journalist can create an article", () => {
   beforeEach(() => {
     cy.server();
@@ -33,6 +34,7 @@ describe("Journalist can create an article", () => {
         cy.get("[data-cy='lead-field']").type("Article Lead");
         cy.get("[data-cy='body-field']").type("Article Body");
         cy.get('[data-cy="categories-dropdown"]').select("Culture");
+        cy.get('[name="file_input"]').attachFile('image.png')
         cy.get("[data-cy='create-article-button']").click();
         cy.get("[data-cy='api-response-success-message']").should(
           "contain",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   Container,
@@ -7,6 +7,8 @@ import {
   Input,
   TextArea,
   Message,
+  Divider,
+  Image,
 } from "semantic-ui-react";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +17,11 @@ import ArticlesServices from "../modules/ArticlesServices";
 const CreateArticleForm = () => {
   const dispatch = useDispatch();
   const { createArticleMessage, errorMessage } = useSelector((state) => state);
+  const [image, setImage] = useState();
+
+  const setImagePreview = (event) => {
+    setImage(event.target.files[0]);
+  };
 
   return (
     <Container>
@@ -59,6 +66,14 @@ const CreateArticleForm = () => {
             <option value={5}>Culture</option>
           </select>
         </Form.Field>
+        <Form.Input
+          name="file_input"
+          placeholder="Image"
+          type="file"
+          label="Image"
+          data-cy="file-input"
+          onChange={setImagePreview}
+        />
         <Button
           data-cy="create-article-button"
           type="submit"
@@ -82,6 +97,16 @@ const CreateArticleForm = () => {
           </Message>
         )}
       </Form>
+      <Container>
+        <Divider horizontal>Image Preview:</Divider>
+        {image && (
+          <Image
+            size="small"
+            centered="true"
+            src={URL.createObjectURL(image)}
+          />
+        )}
+      </Container>
     </Container>
   );
 };

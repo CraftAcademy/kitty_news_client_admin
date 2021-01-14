@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("Journalist can login to see article form", () => {
   beforeEach(() => {
     cy.server();

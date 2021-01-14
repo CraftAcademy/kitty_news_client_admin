@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 describe("Journalist can create an article", () => {
   beforeEach(() => {
     cy.server();
@@ -33,15 +34,21 @@ describe("Journalist can create an article", () => {
         cy.get("[data-cy='lead-field']").type("Article Lead");
         cy.get("[data-cy='body-field']").type("Article Body");
         cy.get('[data-cy="categories-dropdown"]').select("Culture");
+        cy.get('[name="file_input"]').attachFile("image.png");
         cy.get("[data-cy='create-article-button']").click();
         cy.get("[data-cy='api-response-success-message']").should(
           "contain",
           "Your article was successfully created"
         );
       });
+      cy.get("[data-cy='preview-article-item']").within(() => {
+        cy.get("[data-cy='preview-title']").should("contain", "Article Title");
+        cy.get("[data-cy='preview-lead']").should("contain", "Article Lead");
+        cy.get("[data-cy='preview-body']").should("contain", "Article Body");
+        cy.get('[data-cy="preview-category"]').should("contain", "Culture");
+      });
     });
   });
-
   describe("unsuccessfully", () => {
     it("when title is not filled in ", () => {
       cy.route({
@@ -50,7 +57,6 @@ describe("Journalist can create an article", () => {
         response: { message: "Title can't be blank" },
         status: 422,
       });
-
       cy.get("[data-cy='article-form']").within(() => {
         cy.get("[data-cy='lead-field']").type("Article Lead");
         cy.get("[data-cy='body-field']").type("Article Body");

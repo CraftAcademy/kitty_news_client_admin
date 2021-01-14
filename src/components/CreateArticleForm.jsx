@@ -23,10 +23,6 @@ const CreateArticleForm = () => {
   const [body, setBody] = useState();
   const [category, setCategory] = useState();
 
-  const setImagePreview = (event) => {
-    setImage(event.target.files[0]);
-  };
-
   return (
     <Container>
       <Header>Create Article</Header>
@@ -82,7 +78,7 @@ const CreateArticleForm = () => {
           type="file"
           label="Image:"
           data-cy="file-input"
-          onChange={setImagePreview}
+          onChange={(event) => setImage(event.target.files[0])}
         />
         <Button
           data-cy="create-article-button"
@@ -108,7 +104,6 @@ const CreateArticleForm = () => {
         )}
       </Form>
       <Divider horizontal>Article Preview</Divider>
-
       <Item.Group>
         <Item data-cy="preview-article-item">
           {image && (
@@ -118,7 +113,7 @@ const CreateArticleForm = () => {
             <Item.Header>Title: {title}</Item.Header>
             <Item.Meta>Lead: {lead}</Item.Meta>
             <Item.Description>Body: {body}</Item.Description>
-            <Item.Description>Category: {category}</Item.Description>
+            <Item.Meta>Category: {category}</Item.Meta>
           </Item.Content>
         </Item>
       </Item.Group>

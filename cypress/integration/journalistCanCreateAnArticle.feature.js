@@ -34,7 +34,7 @@ describe("Journalist can create an article", () => {
         cy.get("[data-cy='lead-field']").type("Article Lead");
         cy.get("[data-cy='body-field']").type("Article Body");
         cy.get('[data-cy="categories-dropdown"]').select("Culture");
-        cy.get('[name="file_input"]').attachFile('image.png')
+        cy.get('[name="file_input"]').attachFile("image.png");
         cy.get("[data-cy='create-article-button']").click();
         cy.get("[data-cy='api-response-success-message']").should(
           "contain",

@@ -110,10 +110,16 @@ const CreateArticleForm = () => {
             <Item.Image size="small" src={URL.createObjectURL(image)} />
           )}
           <Item.Content>
-            <Item.Header>Title: {title}</Item.Header>
-            <Item.Meta>Lead: {lead}</Item.Meta>
-            <Item.Description>Body: {body}</Item.Description>
-            <Item.Meta>Category: {category}</Item.Meta>
+            <Item.Header data-cy="preview-title">Title: {title}</Item.Header>
+            <Item.Description data-cy="preview-lead">
+              Lead: {lead}
+            </Item.Description>
+            <Item.Description data-cy="preview-body">
+              Body: {body}
+            </Item.Description>
+            <Item.Description data-cy="preview-category">
+              Category: {category}
+            </Item.Description>
           </Item.Content>
         </Item>
       </Item.Group>

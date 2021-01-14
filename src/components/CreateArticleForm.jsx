@@ -8,7 +8,7 @@ import {
   TextArea,
   Message,
   Divider,
-  Image,
+  Item,
 } from "semantic-ui-react";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -18,14 +18,14 @@ const CreateArticleForm = () => {
   const dispatch = useDispatch();
   const { createArticleMessage, errorMessage } = useSelector((state) => state);
   const [image, setImage] = useState();
-  const [title, setTitle] = useState()
-  const [lead, setLead] = useState()
-  const [body, setBody] = useState()
+  const [title, setTitle] = useState();
+  const [lead, setLead] = useState();
+  const [body, setBody] = useState();
+  const [category, setCategory] = useState();
 
   const setImagePreview = (event) => {
     setImage(event.target.files[0]);
   };
-
 
   return (
     <Container>
@@ -36,7 +36,7 @@ const CreateArticleForm = () => {
       >
         <Form.Field
           data-cy="title-field"
-          label="Article title"
+          label="Article title:"
           control={Input}
           name="title"
           placeholder="Title"
@@ -44,21 +44,19 @@ const CreateArticleForm = () => {
         />
         <Form.Field
           data-cy="lead-field"
-          label="Article lead"
+          label="Article lead:"
           control={Input}
           name="lead"
           placeholder="Lead"
           onChange={(event) => setLead(event.target.value)}
-
         />
         <Form.Field
           data-cy="body-field"
-          label="Article body"
+          label="Article body:"
           control={TextArea}
           name="body"
           placeholder="Body"
           onChange={(event) => setBody(event.target.value)}
-
         />
         <Form.Field>
           <label for="categories">Choose a category:</label>
@@ -66,6 +64,9 @@ const CreateArticleForm = () => {
             name="categories"
             id="categories"
             data-cy="categories-dropdown"
+            onChange={(event) =>
+              setCategory(event.target[event.target.value].innerText)
+            }
           >
             <option value={0}>Select</option>
             <option value={1}>Global Politics</option>
@@ -79,7 +80,7 @@ const CreateArticleForm = () => {
           name="file_input"
           placeholder="Image"
           type="file"
-          label="Image"
+          label="Image:"
           data-cy="file-input"
           onChange={setImagePreview}
         />
@@ -106,21 +107,21 @@ const CreateArticleForm = () => {
           </Message>
         )}
       </Form>
-      <Container>
-        <Divider horizontal>Article Preview:</Divider>
-        <Message>{title}</Message>
-        <Message>{lead}</Message>
-        <Message>{body}</Message>
+      <Divider horizontal>Article Preview</Divider>
 
-        {image && (
-          <Image
-            size="small"
-            centered="true"
-            src={URL.createObjectURL(image)}
-          />
-        )}
-
-      </Container>
+      <Item.Group>
+        <Item data-cy="preview-article-item">
+          {image && (
+            <Item.Image size="small" src={URL.createObjectURL(image)} />
+          )}
+          <Item.Content>
+            <Item.Header>Title: {title}</Item.Header>
+            <Item.Meta>Lead: {lead}</Item.Meta>
+            <Item.Description>Body: {body}</Item.Description>
+            <Item.Description>Category: {category}</Item.Description>
+          </Item.Content>
+        </Item>
+      </Item.Group>
     </Container>
   );
 };

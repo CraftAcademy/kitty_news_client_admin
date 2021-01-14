@@ -1,5 +1,5 @@
 import axios from "axios";
-import toBase64 from './toBase64'
+import toBase64 from "./toBase64";
 
 const ArticlesServices = {
   async create(event, dispatch) {
@@ -8,7 +8,7 @@ const ArticlesServices = {
     try {
       let encodedImage;
       if (event.target.file_input.files[0]) {
-        encodedImage = await toBase64(event.target.file_input.files[0])
+        encodedImage = await toBase64(event.target.file_input.files[0]);
       }
       let response = await axios.post(
         "/articles",
@@ -25,6 +25,7 @@ const ArticlesServices = {
           headers: headers,
         }
       );
+      event.target.reset();
       dispatch({
         type: "SET_ARTICLE_MESSAGE",
         payload: response.data.message,
